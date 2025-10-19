@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL_Agent Chat</title>
+   <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="header">
+      <h2>SQLAgent</h2>
+      <div class="buttons">
+        
+        <button class="db_btn">
+          <span class="db_indicator" title="Database Connection"></span>
+          <p>Try Sample DB</p>
+           
+          <div class="tooltip">
+            <h4>📊 Sample Database Info</h4>
+            
+            <div class="tooltip-section">
+              <h5>🏢 Departments Table</h5>
+              <p>10 departments across major US cities</p>
+              <p style="font-size: 11px; color: #888; margin-top: 2px;">Sales, Engineering, HR, Marketing, Finance, etc.</p>
+            </div>
+            
+            <div class="tooltip-divider"></div>
+            
+            <div class="tooltip-section">
+              <h5>👥 Employees Table</h5>
+              <p>30 employees with complete profiles</p>
+              <p style="font-size: 11px; color: #888; margin-top: 2px;">Names, ages, departments, salaries</p>
+            </div>
+            
+            <div class="tooltip-divider"></div>
+            
+            <div class="tooltip-section">
+              <h5>💡 Try queries like:</h5>
+              <p style="font-size: 11px;">• "Show all employees in Engineering"<br>• "Average salary by department etc..."</p>
+            </div>
+            <div class="tooltip-divider"></div>
+            <div class="tooltip-section">
+              <h5>⚠️ Try human approval queries like:</h5>
+              <p style="font-size: 11px;">• "Delete employees with salary below 40000"<br>• "Update all Marketing salaries by 10% etc..."</p>
+            </div>
+          </div>
+        </button>
+        <button class="theme-toggle" id="themeToggle">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF" id="themeIcon">
+            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/>
+          </svg>
+        </button>
+      </div> 
+    </div>
+
+    <div class="intro" id="intro">
+      <h1>How can I help you today?</h1>
+      <h3><span class="element"></span></h3>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="input-area centered-input" id="inputBox">
+      <button class="content-btn" id="dbConnectBtn" title="Connect Database">
+        <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="#FFFFFF">
+          <path d="M480-520q150 0 255-47t105-113q0-66-105-113t-255-47q-150 0-255 47T120-680q0 66 105 113t255 47Zm0 100q41 0 102.5-8.5T701-456q57-19 98-49.5t41-74.5v100q0 44-41 74.5T701-356q-57 19-118.5 27.5T480-320q-41 0-102.5-8.5T259-356q-57-19-98-49.5T120-480v-100q0 44 41 74.5t98 49.5q57 19 118.5 27.5T480-420Zm0 200q41 0 102.5-8.5T701-256q57-19 98-49.5t41-74.5v100q0 44-41 74.5T701-156q-57 19-118.5 27.5T480-120q-41 0-102.5-8.5T259-156q-57-19-98-49.5T120-280v-100q0 44 41 74.5t98 49.5q57 19 118.5 27.5T480-220Z"/>
+        </svg>
+      </button>
+      <input type="text" id="userInput" placeholder="Type your message..." />
+      <button id="sendBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="#FFFFFF">
+          <path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+ 
+  <div id="approvalModal" class="modal">
+    <div class="modal-content">
+      <p id="approvalMessage"></p>
+      <div class="modal-buttons">
+        <button id="approveYes" type="button" onclick="approval_is_yes()">Yes</button>
+        <button id="approveNo" type="button" onclick="approval_is_no()">No</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dbModal" class="modal">
+    <div class="modal-content">
+      <h3>Connect to your Database</h3>
+      <input type="text" id="dbUriInput" placeholder="Enter DB URI">
+      <div class="modal-buttons">
+        <button id="connectDbBtn">Connect</button>
+        <button id="cancelDbBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+   <script src="scripts/chat.js"></script>
+</body>
+</html>

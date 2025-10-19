@@ -12,7 +12,8 @@ Built with **LangGraph**, **Langchain**,**FastAPI**, it behaves like your person
 - Ask questions like *“Show me total sales by region this month”* — SQLAgent automatically understands and generates the correct SQL query.  
 
 ✅ **Safe SQL Execution (HITL) - Human in the loop**  
-- Before running any destructive operation (like `DELETE`, `UPDATE`, or `DROP`), the system pauses and asks for **human approval** to prevent accidental data loss.  
+- Before running any destructive operation (like `DELETE`, `UPDATE`, or `DROP`), the system pauses and asks for **human approval** to prevent accidental data loss.
+  
 ✅ **Interactive Visualization Agent**  
 - When results require insights, SQLAgent generates and displays **charts** (bar, line, pie, etc.) directly in the chat interface.  
 

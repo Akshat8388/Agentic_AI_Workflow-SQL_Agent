@@ -1,4 +1,4 @@
-# SQLAgent — AI-Powered Data Analyst  
+# SQLAgent — AI-Powered SQL Data Analyst  
 
 **SQLAgent** is an intelligent, full-stack AI system that understands natural language, executes SQL queries safely (with human approval for risky operations), and visualizes insights instantly — all through a conversational chat interface.  
 

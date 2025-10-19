@@ -45,5 +45,6 @@ Built with **LangGraph**, **Langchain**,**FastAPI**, it behaves like your person
 | Database | SQLite (Demo) — supports PostgreSQL/MySQL integration |
 
 ## 🚀 Demo
+https://github.com/user-attachments/assets/ab490476-cfa0-4d4b-8810-12d44d5ff268
 
 

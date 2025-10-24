@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware 
 from pydantic import BaseModel 
 from typing import Optional 
@@ -44,10 +44,9 @@ config = {"configurable": {"thread_id": thread_id}}
 
 @app.post("/chat") 
 async def chat_with_agent(request: QueryRequest): 
-    """ Accepts a user query and streams the agent's response. If human approval is needed, it sends a warning and a thread_id, then pauses. """ 
+    """ Accepts a user query and streams the agent's response. If human approval is needed, it sends a warning then pauses. """ 
     async def stream_events(): 
-        try: # Each conversation gets a unique thread_id 
-             
+        try: 
             initial_state = { "messages": [HumanMessage(content=request.user_message)], "db_path": request.db_path } 
             seen_nodes = set() 
             async for event in agent.astream_events(initial_state, config=config, version="v1"): 
@@ -70,9 +69,7 @@ async def chat_with_agent(request: QueryRequest):
                     img_path = event["data"]["output"].get("img_path")
                     if img_path:
                         yield json.dumps({"img_url": img_path}) + "\n"         
-                       
-                        
-                            
+                                 
                 elif event["event"] == "on_chain_stream" and node_name in ["checking_database_connection", "human_approval"]: 
                     data = event["data"]["chunk"] 
                     if node_name == "checking_database_connection": 
@@ -125,4 +122,5 @@ async def resume_agent(request: QueryRequest):
 
 @app.get("/", response_class=HTMLResponse)
 def serve_auth():
+
     return FileResponse(os.path.join(BASE_DIR, "../frontend/index.html"))
